@@ -1,0 +1,25 @@
+html
+  head
+    title= pageTitle
+    link(rel='stylesheet', type='text/css', href='/css/estilos.css')
+  body    
+    nav
+      ul
+        li
+          a(href="/") Inicio
+        if user
+            li
+                a(href="/clientes") Clientes
+            li 
+                a(href="/ventas") Ventas
+            li 
+                a(href="/libros") Libros
+            li 
+                a(href="/autor") Autor 
+            li
+                a(href="/logout") Cerrar sesión
+        else
+          li
+            a(href="/login") Iniciar Sesión
+      
+    block content
