@@ -1,0 +1,14 @@
+extends ../templates/layout
+
+block content 
+    h3 Borrar Cliente
+        div 
+            form(method="post") 
+                label(for="nombre") Nombre:
+                input(type="text", name="nombre", value=`${alumno.nombre}`,disabled)
+                br
+                label(for="apellido") Apellido:
+                input(type="text", name="apellido", value=`${alumno.apellido}`,disabled)
+                br
+                input(type="hidden", name="id", value=`${alumno.id}`)
+                input(type="submit", value="Enviar")
