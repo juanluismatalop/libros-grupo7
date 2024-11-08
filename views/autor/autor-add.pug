@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 Agregar Autor
+  form(action='/autor-add', method='post')
+    label(for='nombre') Nombre:
+    input(type='text', id='nombre', name='nombre', required=true)
+    br
+    label(for='pais') Pais :
+    input(type='text', id='pais', name='pais', required=true)
+    br
+    button(type='submit') Agregar Autor 
+  br
+  a(href='/') Volver a la Lista
