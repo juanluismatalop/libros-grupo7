@@ -1,0 +1,18 @@
+{
+  "name": "libros",
+  "version": "0.0.1",
+  "description": "Proyecto libros de Juan Luis Mata y David Rico",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "libros": "file:",
+    "mysql2": "^3.11.4",
+    "pug": "^3.0.3"
+  }
+}
