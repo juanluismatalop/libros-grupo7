@@ -2,7 +2,6 @@ version: "3"
 services: 
   gestion:
     image: mysql:latest
-    command: --default-authentication-plugin=mysql_native_password
     restart: "no"
     environment:
       MYSQL_ROOT_PASSWORD: elDeSant14g0
