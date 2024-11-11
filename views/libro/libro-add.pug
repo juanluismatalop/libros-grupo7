@@ -1,11 +1,17 @@
 extends ../templates/layout
 
 block content
-  h1 Agregar Libro
-  form(action='/libro-add', method='post')
-    label(for='titulo') Titulo:
-    input(type='text', id='codigo', name='titulo', required=true)
+    h1 Agregar Libro
+    form(action='/libro-add', method='post')
+      label(for='titulo') Titulo:
+      input(type='text', id='titulo', name='titulo', required=true)
+      br
+      label(for='fecha_publicacion') Fecha de Publicacion: 
+      input(type='date', id='fecha_publicacion', name='fecha_publicacion', required= true)
+      br
+      label(for="precio") Precio: 
+      input(type='number', id='precio', name='precio', required=true)
+      br
+      button(type='submit') Agregar Libro
     br
-    button(type='submit') Agregar Libro
-  br
-  a(href='/') Volver a la Lista
+    a(href='/libros') Volver a la Lista
