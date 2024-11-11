@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    h1 Lista de Autores
+    table
+      thead
+        tr
+          th ID_Autor
+          th Nombre
+          th Pais
+          th Acciones
+      tbody
+        each autor in autor
+          tr
+            td= autor.id_autor
+            td= autor.nombre
+            td= autor.pias
+            td
+              a(href=`/autor-edit/${autor.id_autor}`) Editar
+              span | 
+              a(href=`/autor-delete/${autor .id_autor}`) Eliminar
+    p
+      a(href='/autor-add') Agregar Nuevo Alumno
