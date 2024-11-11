@@ -1,0 +1,14 @@
+extends ../templates/layout
+
+block content
+  h1 Editar Alumno
+  form(action=`/autor-edit/${autor.id}`, method='post')      
+    label(for='nombre') Nombre:
+    input.form-control(type='text', id='nombre', name='nombre', value=autor.nombre, required=true)
+    br
+    label(for='pais') Pais:
+    input.form-control(type='text', id='pais', name='pais', value=autor.pais, required=true)
+    br
+    button(type='submit') Guardar Cambios
+    br
+  a(href='/autor') Volver a la Lista
