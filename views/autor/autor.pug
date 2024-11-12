@@ -1,4 +1,4 @@
-extends layout
+extends ../templates/layout
 
 block content
     h1 Lista de Autores
@@ -21,3 +21,8 @@ block content
               a(href=`/autor-delete/${autor .id_autor}`) Eliminar
     p
       a(href='/autor-add') Agregar Nuevo Alumno
+
+    h2 Maestro detalle: Libros escritos por un autor
+    
+    label(for="libros")
+    select(name="libros", id="libros", onchange="location = '/libros/' + this.value;")
