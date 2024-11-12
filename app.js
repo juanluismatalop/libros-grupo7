@@ -85,7 +85,7 @@ app.get("/libro", (req, res) => {
     if (err) {
       res.render("error", { mensaje: err });
     } else {
-      res.render("asignaturas", { libro: result });
+      res.render("asignaturas", { libros: result });
     }
   });
 });
@@ -94,30 +94,26 @@ app.get("/libro-add", (req, res) => {
   res.render("libros-add");
 });
 
-app.post("/asignaturas-add", (req, res) => {
+app.post("/libro-add", (req, res) => {
   const { titulo, fecha_publicacion, precio } = req.body;
   const query =
     "INSERT INTO LIBRO (TITULO, FECHA_PUBLICACION, PRECIO) VALUES (?, ? ,?)";
   db.query(query, [titulo, fecha_publicacion, precio], (err) => {
-    if (err) throw err;
+    if (err) res.render("error", { mensaje: err.message });
     res.redirect("/libro");
   });
 });
 
-app.get(
-  "/libro-edit/:id",
-  (req,
-  (res) => {
-    const libroId = req.params.id;
-    const query = "SELECT * FROM LIBRO WHERE ID_LIBRO = ?";
-    db.query(query, [libroId], (err, results) => {
-      if (err) res.render("error", { mensaje: err });
-      else res.render("libro-edit", { libro: result[0] });
-    });
-  })
-);
+app.get("/libro-edit/:id", (req, res) => {
+  const libroId = req.params.id;
+  const query = "SELECT * FROM LIBRO WHERE ID_LIBRO = ?";
+  db.query(query, [libroId], (err, results) => {
+    if (err) res.render("error", { mensaje: err.message });
+    else res.render("libro-edit", { libro: results[0] });
+  });
+});
 
-app.post("libro-edit/:id", (req, res) => {
+app.post("/libro-edit/:id", (req, res) => {
   const libroId = req.params.id;
   const { titulo, fecha_publicacion, precio } = req.body;
   const query =
@@ -128,20 +124,78 @@ app.post("libro-edit/:id", (req, res) => {
   });
 });
 
-app.get("libro-delete/:id", (req, res) => {
+app.get("/libro-delete/:id", (req, res) => {
   const libroId = req.params.id;
   const query = "SELECT * FROM LIBRO WHERE ID_LIBRO = ?";
   db.query(query, [libroId], (err, results) => {
-    if (err) res.render("error", { mensaje: err });
-    else res.redirect("/libro-delete", { libro: result[0] });
+    if (err) res.render("error", { mensaje: err.message });
+    else res.render("libro-delete", { libro: results[0] });
   });
 });
 
-app.post("libro-delete/:id", (req, res) => {
+app.post("/libro-delete/:id", (req, res) => {
   const libroId = req.params.id;
   const query = "DELETE FROM LIBRO WHERE ID_LIBRO = ?";
-  db.query(query, [libroId], (err, resutl) => {
-    if (err) res.render("error", { mensaje: err });
-    else res.render(res.redirect("/libro"));
+  db.query(query, [libroId], (err) => {
+    if (err) res.render("error", { mensaje: err.message });
+    else res.redirect("/libro");
+  });
+});
+
+app.get("/venta", (req, res) => {
+  db.query("SELECT * FROM VENTA", (err, result) => {
+    if (err) {
+      res.render("error", { mensaje: err.message });
+    } else {
+      res.render("venta", { ventas: result });
+    }
+  });
+});
+
+app.get("/venta-add", async (req, res) => {
+  try {
+    // Obtener clientes y libros para desplegarlos en la vista
+    const [clientes] = await db.query("SELECT ID_CLIENTE, NOMBRE FROM CLIENTE");
+    const [libros] = await db.query("SELECT ID_LIBRO, TITULO FROM LIBRO");
+    res.render("venta-add", { clientes, libros });
+  } catch (err) {
+    res.render("error", { mensaje: err.message });
+  }
+});
+
+app.post("/venta-add", async (req, res) => {
+  const { fecha_venta, cliente, libro } = req.body;
+
+  try {
+    // Insertar la venta en la tabla VENTA
+    const [ventaResult] = await db.query(
+      "INSERT INTO VENTA (FECHA_VENTA, ID_CLIENTE) VALUES (?, ?)",
+      [fecha_venta, cliente]
+    );
+
+    const ventaId = ventaResult.insertId;
+
+    // Insertar el libro seleccionado en la tabla VENTA_LIBRO
+    await db.query(
+      "INSERT INTO VENTA_LIBRO (ID_VENTA, ID_LIBRO) VALUES (?, ?)",
+      [ventaId, libro]
+    );
+
+    res.redirect("/venta");
+  } catch (err) {
+    res.render("error", { mensaje: err.message });
+  }
+});
+
+app.get("/venta-delete", (req, res) => {
+  res.render("venta-delete");
+});
+
+app.post("venta-delete/:id", (req, res) => {
+  const ventaId = req.params.id;
+  const query = "DELETE FROM VENTA WHERE ID_VENTA = ?";
+  db.query(query, [ventaId], (err) => {
+    if (err) res.render("error", { mensaje: err.message });
+    else res.redirect("/libro");
   });
 });

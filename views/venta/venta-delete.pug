@@ -1,0 +1,9 @@
+extends ../templates/layout
+
+block content
+    h1 Eliminar Venta
+    p ¿Estás seguro de que deseas anular esta venta?
+    form(action=`/venta-delete/${venta.ID_VENTA}`, method='post')
+        button(type='submit') confirmar devolucion
+    br
+    a(href='/libros') Cancelar

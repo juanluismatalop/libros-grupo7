@@ -1,0 +1,20 @@
+extends ../templates/layout
+
+block content
+    h1 Listado de ventas
+    table 
+        thead 
+            tr 
+                th Id Venta 
+                th Fecha de Venta
+                th Total 
+        tbody 
+            each venta in ventas 
+                tr 
+                    td= venta.ID_VENTA
+                    td= venta.FECHA_VENTA
+                    td= venta.TOTAL 
+                    td 
+                        a(href=`/libro-delete/${libro.id_libro}`) Eliminar venta
+    p 
+        a(href='/venta-add') Agregar nueva venta
