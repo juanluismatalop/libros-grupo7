@@ -142,6 +142,8 @@ app.post("/libro-delete/:id", (req, res) => {
   });
 });
 
+
+
 app.get("/venta", (req, res) => {
   db.query("SELECT * FROM VENTA", (err, result) => {
     if (err) {
@@ -152,40 +154,12 @@ app.get("/venta", (req, res) => {
   });
 });
 
-app.get("/venta-add", async (req, res) => {
-  try {
-    // Obtener clientes y libros para desplegarlos en la vista
-    const [clientes] = await db.query("SELECT ID_CLIENTE, NOMBRE FROM CLIENTE");
-    const [libros] = await db.query("SELECT ID_LIBRO, TITULO FROM LIBRO");
-    res.render("venta-add", { clientes, libros });
-  } catch (err) {
-    res.render("error", { mensaje: err.message });
-  }
-});
 
-app.post("/venta-add", async (req, res) => {
-  const { fecha_venta, cliente, libro } = req.body;
+app.post("/venta-add", (req, res) => {
+  db.query("SELECT")
+})
 
-  try {
-    // Insertar la venta en la tabla VENTA
-    const [ventaResult] = await db.query(
-      "INSERT INTO VENTA (FECHA_VENTA, ID_CLIENTE) VALUES (?, ?)",
-      [fecha_venta, cliente]
-    );
 
-    const ventaId = ventaResult.insertId;
-
-    // Insertar el libro seleccionado en la tabla VENTA_LIBRO
-    await db.query(
-      "INSERT INTO VENTA_LIBRO (ID_VENTA, ID_LIBRO) VALUES (?, ?)",
-      [ventaId, libro]
-    );
-
-    res.redirect("/venta");
-  } catch (err) {
-    res.render("error", { mensaje: err.message });
-  }
-});
 
 app.get("/venta-delete", (req, res) => {
   res.render("venta-delete");

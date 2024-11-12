@@ -1,7 +1,7 @@
 extends ../templates/layout
 
 block content
-    h1 Listado de ventas
+    h1 Lista de Ventas 
     table 
         thead 
             tr 
@@ -9,12 +9,12 @@ block content
                 th Fecha de Venta
                 th Total 
         tbody 
-            each venta in ventas 
+            each venta in venta 
                 tr 
-                    td= venta.ID_VENTA
-                    td= venta.FECHA_VENTA
-                    td= venta.TOTAL 
+                    td= venta.id_venta 
+                    td= venta.fecha_venta
+                    td= venta.total 
                     td 
-                        a(href=`/libro-delete/${libro.id_libro}`) Eliminar venta
+                        a(href=`/venta-delete/${libro.id_libro}`) Eliminar venta
     p 
         a(href='/venta-add') Agregar nueva venta
