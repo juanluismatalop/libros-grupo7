@@ -14,4 +14,8 @@ services:
     image: adminer:latest
     restart: "no"
     ports:
+<<<<<<< HEAD
       - ${ADMINER_PORT}:8080
+=======
+      - ${ADMINER_PORT}:8080
+>>>>>>> abb050b8485da9867aa7f1c4794eada177ce59e1
