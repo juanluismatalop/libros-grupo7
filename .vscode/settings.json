@@ -9,9 +9,10 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "db-stack",
-            "username": "root",
-            "database": "sql"
+            "name": "libros_db_connection",
+            "group": "Proyectos",
+            "database": "libros judas tadeo",
+            "username": "root"
         }
     ]
 }
