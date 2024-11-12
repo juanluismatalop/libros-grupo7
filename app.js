@@ -159,3 +159,69 @@ app.post('/autor-delete/:id', (req, res) => {
   });
 
 });
+
+app.get('/cliente', (req, res) => {
+  db.query('SELECT * FROM CLIENTE', (err, result) => {
+    if (err) res.render("error", { mensaje: err });
+    else res.render('cliente', { clientes: result });
+  });
+});
+
+app.get('/cliente-add', (req, res) => {
+  res.render('cliente-add');
+});
+
+app.post('/cliente-add', (req, res) => {
+  const { nombre, correo } = req.body;
+  db.query('INSERT INTO CLIENTE (NOMBRE, CORREO) VALUES (?, ?)', [nombre, correo], (err, result) => {
+    if (err) res.render("error", { mensaje: err });
+    else {
+      console.log('Cliente creado con id:' + result.insertId);
+      res.redirect('/cliente');
+    }
+  });
+});
+
+app.get('/cliente-edit/:id', (req, res) => {
+  const clienteId = req.params.id;
+  db.query('SELECT * FROM CLIENTE WHERE ID_CLIENTE = ?', [clienteId], (err, result) => {
+    if (err) res.render("error", { mensaje: err });
+    else {
+      if (result.length > 0)
+        res.render('cliente-edit', { cliente: result[0] });
+      else
+        res.render('error', { mensaje: 'El cliente no existe.' });
+    }
+  });
+});
+
+app.post('/cliente-edit/:id', (req, res) => {
+  const clienteId = req.params.id;
+  const { nombre, correo } = req.body;
+  db.query('UPDATE CLIENTE SET NOMBRE = ?, CORREO = ? WHERE ID_CLIENTE = ?', [nombre, correo, clienteId], (err, result) => {
+    if (err)
+      res.render("error", { mensaje: err });
+    else
+      res.redirect('/cliente');
+  });
+});
+
+app.get('/cliente-delete/:id', (req, res) => {
+  const clienteId = req.params.id;
+  db.query('SELECT * FROM CLIENTE WHERE ID_CLIENTE = ?', [clienteId], (err, result) => {
+    if (err)
+      res.render("error", { mensaje: err });
+    else
+      res.render('cliente-delete', { cliente: result[0] });
+  });
+});
+
+app.post('/cliente-delete/:id', (req, res) => {
+  const clienteId = req.params.id;
+  db.query('DELETE FROM CLIENTE WHERE ID_CLIENTE = ?', [clienteId], (err, result) => {
+    if (err)
+      res.render("error", { mensaje: err });
+    else
+      res.redirect('/cliente');
+  });
+});
