@@ -5,10 +5,9 @@ services:
     image: mysql:latest
     restart: "no"
     environment:
-      MYSQL_ROOT_PASSWORD: elDeSant14g0
-      MYSQL_DATABASE: libros judas tadeo
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
-      - "33308:3306"
+      - ${MYSQL_PORT}:3306
     volumes:
       - ./scripts:/docker-entrypoint-initdb.d
 
@@ -16,4 +15,4 @@ services:
     image: adminer:latest
     restart: "no"
     ports:
-      - "8183:8080"
+      - ${ADMINER_PORT}:8080
