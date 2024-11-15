@@ -161,9 +161,21 @@ app.get("/venta", (req, res) => {
 });
 
 
+app.post("/venta", (req, res) => {
+  const {id_venta, fecha_venta, total} = req.body;
+  
+});
+
+
+app.get("venta-add", (req, res) => {
+
+});
+
+
 app.post("/venta-add", (req, res) => {
   db.query("SELECT")
-})
+
+});
 
 
 
