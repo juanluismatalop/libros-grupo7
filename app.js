@@ -149,6 +149,72 @@ app.get('/autor', (req, res) => {
   });
 });
 
+app.get('/autor-add', (req, res) => {
+  res.render('autor-add');
+});
+
+app.post('/autor-add', (req, res) => {
+  const { nombre, pais } = req.body;
+  db.query('INSERT INTO AUTOR (NOMBRE, PAIS) VALUES (?, ?)', [nombre, pais], (err, result) => {
+    if (err) res.render("error", { mensaje: err });
+    else {
+      console.log('Autor creado con id:'+result.insertId);
+      
+      res.redirect('/autor');
+    }
+  });
+
+});
+
+app.get('/autor-edit/:id', (req, res) => {
+
+  const alumnoId = req.params.id;
+  db.query('SELECT * FROM AUTOR WHERE id_autor = ?', [id_autor], (err, result) => {
+    if (err) res.render("error", { mensaje: err });
+    else {
+      if(result.length>0)
+        res.render('autor-edit', { alumno: result[0] });
+      else
+        res.render('error', {mensaje: 'El autor no existe.'})
+    }
+
+  });
+});
+
+app.post('/autor-edit/:id', (req, res) => {
+  const alumnoId = req.params.id;
+  const { nombre, apellido } = req.body;
+  db.query('UPDATE AUTOR SET NOMBRE = ?, PAIS = ? WHERE ID = ?', [nombre, pais, id_autor], (err, result) => {
+    if (err)
+      res.render("error", { mensaje: err });
+    else
+      res.redirect('/autor');
+  });
+
+});
+
+app.get('/autor-delete/:id', (req, res) => {
+
+  const alumnoId = req.params.id;
+  db.query('SELECT * FROM AUTOR WHERE id = ?', [id_autor], (err, result) => {
+    if (err)
+      res.render("error", { mensaje: err });
+    else
+      res.render('autor-delete', { autor: result[0] });
+  });
+
+});
+
+app.post('/autor-delete/:id', (req, res) => {
+  const alumnoId = req.params.id;
+  // Eliminar un alumno por su ID
+  db.query('DELETE FROM AUTOR WHERE id_autor = ?', [id_autor], (err, result) => {
+    if (err)
+      res.render("error", { mensaje: err });
+    else
+      res.redirect('/autor');
+  });
+
 
 app.get("/venta", (req, res) => {
   db.query("SELECT * FROM VENTA", (err, result) => {
@@ -161,9 +227,21 @@ app.get("/venta", (req, res) => {
 });
 
 
+app.post("/venta", (req, res) => {
+  const {id_venta, fecha_venta, total} = req.body;
+  
+});
+
+
+app.get("venta-add", (req, res) => {
+
+});
+
+
 app.post("/venta-add", (req, res) => {
   db.query("SELECT")
-})
+
+});
 
 
 
@@ -178,7 +256,7 @@ app.post("venta-delete/:id", (req, res) => {
     if (err) res.render("error", { mensaje: err.message });
     else res.redirect("/libro");
   });
-});
+})
 
 app.get('/cliente', (req, res) => {
   db.query('SELECT * FROM CLIENTE', (err, result) => {
@@ -245,3 +323,4 @@ app.post('/cliente-delete/:id', (req, res) => {
       res.redirect('/cliente');
   });
 });
+})
