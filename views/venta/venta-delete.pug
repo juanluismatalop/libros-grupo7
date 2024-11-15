@@ -1,0 +1,11 @@
+extends ../templates/layout
+
+block content
+    h1 Eliminar Venta
+    form(action='/venta', method='post')
+      label(for='venta') Venta:
+      input(type='number', id='id_venta', name='id_venta', required=true)
+      br
+      button(type='submit') Eliminar Venta
+    br
+    a(href='/venta') Volver a la Lista

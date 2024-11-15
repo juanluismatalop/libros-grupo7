@@ -1,0 +1,12 @@
+extends ../templates/layout
+
+block content
+    h1 Eliminar Libro
+    p ¿Estás seguro de que deseas eliminar el libro con el siguiente detalle?
+    ul
+      li Titulo: #{libro.titulo}
+      li Codigo: #{libro.id_libro}
+    form(action=`/libro-delete/${libro.id_libro}`, method='post')
+        button(type='submit') Eliminar Libro
+    br
+    a(href='/libros') Cancelar

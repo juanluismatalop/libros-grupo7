@@ -1,0 +1,24 @@
+extends ../templates/layout
+
+block content
+    h1 Lista de Libros 
+    table 
+        thead 
+            tr 
+                th Id Libro 
+                th Titulo 
+                th Fecha de Publicacion
+                th Precio 
+        tbody 
+            each libro in libros 
+                tr 
+                    td= libro.id_libro 
+                    td= libro.titulo 
+                    td= libro.fecha_publicacion 
+                    td= libro.precio 
+                    td 
+                        a(href=`/libro-edit/${libro.id_libro}`) Editar libro
+                        span 
+                        a(href=`/libro-delete/${libro.id_libro}`) Eliminar libro
+    p 
+        a(href='/libro-add') Agregar nuevo libro

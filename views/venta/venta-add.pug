@@ -1,0 +1,25 @@
+extends ../templates/layout
+
+block content
+    h1 Agregar Venta
+
+    form(action='/venta-add', method='post')
+      label(for='venta') Fecha Venta:
+      input(type='date', id='fecha_venta', name='fecha_venta', required=true)
+      br
+
+      label(for='cliente') Selecciona un Cliente: 
+        select(id='cliente', name='cliente')
+          each cliente in clientes
+            option(value= Cliente.Id)= `${CLIENTE_ID} ${CLIENTE_NOMBRE}` 
+      br
+
+      label(for='libro') selecciona un Libro: 
+        select(id='libro', name='libro')
+          each libro in libros 
+            option(value= Libro.id)= `${LIBRO.ID_LIBRO} ${LIBRO.TITULO}`
+      br
+
+      button(type='submit') Agregar Venta
+    br
+    a(href='/venta') Volver a la Lista de ventas
