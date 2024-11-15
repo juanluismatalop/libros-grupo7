@@ -206,7 +206,41 @@ app.post('/autor-delete/:id', (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 // Rutas para clientes
+=======
+
+
+app.get("venta-add", (req, res) => {
+  res.render("venta-add");
+});
+
+
+app.post("/venta-add", (req, res) => {
+  const {cliente, fecha_venta, libro} = req.body;
+  const query = "INSERT INTO VENTA (FECHA_VENTA, CLIENTE, LIBRO) VALUES (?, ?, ?)";
+  db.query(query, [fecha_venta, cliente, libro], (err) => {
+    if (err) res.render("error", { mensaje: err.message });
+    else res.redirect("/venta");
+  });
+});
+
+
+
+app.get("/venta-delete", (req, res) => {
+  res.render("venta-delete");
+});
+
+app.post("venta-delete/:id", (req, res) => {
+  const {ventaId} = req.body;
+  const query = "DELETE FROM VENTA WHERE ID_VENTA = ?";
+  db.query(query, [ventaId], (err) => {
+    if (err) res.render("error", { mensaje: err.message });
+    else res.redirect("/libro");
+  });
+})
+
+>>>>>>> 6ee0a433bf0716980c76506d7833fddb74c6202e
 app.get('/cliente', (req, res) => {
   db.query('SELECT * FROM CLIENTE', (err, result) => {
     if (err) res.render("error", { mensaje: err });
