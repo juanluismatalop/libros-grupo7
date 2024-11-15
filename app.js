@@ -17,6 +17,10 @@ const db = mysql.createConnection({
   database: "libros",
 });
 
+app.listen(port, () => {
+  console.log(`Servidor escuchando en http://localhost:${port}`);
+});
+
 db.connect((err) => {
   if (err) {
     console.error("Error al conectar a MySQL:", err);
