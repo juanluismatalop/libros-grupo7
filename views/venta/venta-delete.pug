@@ -2,9 +2,14 @@ extends ../templates/layout
 
 block content
     h1 Eliminar Venta
+
     form(action='/venta', method='post')
+
       label(for='venta') Venta:
-      input(type='number', id='id_venta', name='id_venta', required=true)
+      
+      select(id='venta', name='venta')
+          each venta in ventas 
+            option(value= venta.id)= `${VENTA.ID_VENTA}`
       br
       button(type='submit') Eliminar Venta
     br

@@ -161,20 +161,19 @@ app.get("/venta", (req, res) => {
 });
 
 
-app.post("/venta", (req, res) => {
-  const {id_venta, fecha_venta, total} = req.body;
-  
-});
-
 
 app.get("venta-add", (req, res) => {
-
+  res.render("venta-add");
 });
 
 
 app.post("/venta-add", (req, res) => {
-  db.query("SELECT")
-
+  const {cliente, fecha_venta, libro} = req.body;
+  const query = "INSERT INTO VENTA (FECHA_VENTA, CLIENTE, LIBRO) VALUES (?, ?, ?)";
+  db.query(query, [fecha_venta, cliente, libro], (err) => {
+    if (err) res.render("error", { mensaje: err.message });
+    else res.redirect("/venta");
+  });
 });
 
 
@@ -184,7 +183,7 @@ app.get("/venta-delete", (req, res) => {
 });
 
 app.post("venta-delete/:id", (req, res) => {
-  const ventaId = req.params.id;
+  const {ventaId} = req.body;
   const query = "DELETE FROM VENTA WHERE ID_VENTA = ?";
   db.query(query, [ventaId], (err) => {
     if (err) res.render("error", { mensaje: err.message });
