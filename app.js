@@ -206,11 +206,6 @@ app.post('/autor-delete/:id', (req, res) => {
   });
 });
 
-<<<<<<< HEAD
-// Rutas para clientes
-=======
-
-
 app.get("venta-add", (req, res) => {
   res.render("venta-add");
 });
@@ -240,7 +235,8 @@ app.post("venta-delete/:id", (req, res) => {
   });
 })
 
->>>>>>> 6ee0a433bf0716980c76506d7833fddb74c6202e
+
+// Rutas para clientes
 app.get('/cliente', (req, res) => {
   db.query('SELECT * FROM CLIENTE', (err, result) => {
     if (err) res.render("error", { mensaje: err });
