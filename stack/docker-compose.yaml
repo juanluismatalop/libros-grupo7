@@ -6,6 +6,7 @@ services:
     restart: "no"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: libros
     ports:
       - ${MYSQL_PORT}:3306
     volumes:
