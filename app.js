@@ -146,8 +146,11 @@ app.post("/libro-delete/:id", (req, res) => {
 // Rutas para autores
 app.get('/autor', (req, res) => {
   db.query('SELECT * FROM AUTOR', (err, result) => {
-    if (err) res.render("error", { mensaje: err });
-    else res.render('autor', { autor: result });
+    if (err) {
+      res.render("error", { mensaje: err });
+    } else {
+      res.render('autor', { autor: result });
+    }
   });
 });
 
@@ -308,15 +311,18 @@ app.get("/venta", (req, res) => {
 });
 
 app.get("/venta-add", (req, res) => {
-  res.render("venta-add");
-});
-
-app.post("/venta-add", (req, res) => {
-  const { fecha_venta, cliente, libro } = req.body;
-  const query = "INSERT INTO VENTA (FECHA_VENTA, CLIENTE_ID, LIBRO_ID) VALUES (?, ?, ?)";
-  db.query(query, [fecha_venta, cliente, libro], (err) => {
-    if (err) res.render("error", { mensaje: err.message });
-    else res.redirect("/venta");
+  db.query("SELECT * FROM CLIENTE", (err, clientes) => {
+    if (err) {
+      res.render("error", { mensaje: err });
+    } else {
+      db.query("SELECT * FROM LIBRO", (err, libros) => {
+        if (err) {
+          res.render("error", { mensaje: err });
+        } else {
+          res.render("venta-add", { clientes, libros });
+        }
+      });
+    }
   });
 });
 

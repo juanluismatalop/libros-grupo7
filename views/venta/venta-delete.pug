@@ -3,13 +3,12 @@ extends ../templates/layout
 block content
     h1 Eliminar Venta
 
-    form(action='/venta', method='post')
+    form(action=`/venta-delete/${venta.id_venta}`, method='post')
 
       label(for='venta') Venta:
       
       select(id='venta', name='venta')
-          each venta in ventas 
-            option(value= venta.id)= `${VENTA.ID_VENTA}`
+          option(value=venta.id_venta) #{venta.id_venta}
       br
       button(type='submit') Eliminar Venta
     br
