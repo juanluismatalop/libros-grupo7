@@ -167,7 +167,6 @@ app.post('/autor-add', (req, res) => {
   });
 });
 
-// Asegúrate de que las variables id_autor y alumnoId estén definidas correctamente en las rutas de edición y eliminación de autores
 app.get('/autor-edit/:id', (req, res) => {
   const id_autor = req.params.id;
   db.query('SELECT * FROM AUTOR WHERE ID_AUTOR = ?', [id_autor], (err, result) => {
