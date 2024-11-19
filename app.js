@@ -147,7 +147,10 @@ app.post("/libro-delete/:id", (req, res) => {
 app.get('/autor', (req, res) => {
   db.query('SELECT * FROM AUTOR', (err, result) => {
     if (err) res.render("error", { mensaje: err });
-    else res.render('autor/autor', { autor: result });
+    else {
+      console.log(result)
+      res.render('autor/autor', { autor: result });
+    }
   });
 });
 
