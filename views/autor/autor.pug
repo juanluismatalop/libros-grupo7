@@ -1,5 +1,3 @@
-extends ../templates/layout
-
 block content
     h1 Lista de Autores
     table
@@ -10,19 +8,27 @@ block content
           th Pais
           th Acciones
       tbody
-        each autor in autor
+        if autores && autores.length
+          each autor in autores
+            tr
+              td= autor.id_autor
+              td= autor.nombre
+              td= autor.pais
+              td
+                a(href=`autor/autor-edit/${autor.id_autor}`) Editar
+                span | 
+                a(href=`autor/autor-delete/${autor.id_autor}`) Eliminar
+        else
           tr
-            td= autor.id_autor
-            td= autor.nombre
-            td= autor.pias
-            td
-              a(href=`/autor-edit/${autor.id_autor}`) Editar
-              span | 
-              a(href=`/autor-delete/${autor .id_autor}`) Eliminar
+            td(colspan="4") No hay autores disponibles.
     p
-      a(href='/autor-add') Agregar Nuevo Alumno
+      a(href='autor/autor-add') Agregar Nuevo Autor
 
     h2 Maestro detalle: Libros escritos por un autor
     
-    label(for="libros")
-    select(name="libros", id="libros", onchange="location = '/libros/' + this.value;")
+    label(for="libros") Seleccione un libro:
+    select(name="libros", id="libros", onchange="location = 'libro/libro/' + this.value;")
+      option(value="") -- Seleccione un autor --
+      if autores && autores.length
+        each autor in autores
+          option(value=autor.id_autor)= autor.nombre

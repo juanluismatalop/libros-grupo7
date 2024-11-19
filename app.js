@@ -146,11 +146,8 @@ app.post("/libro-delete/:id", (req, res) => {
 // Rutas para autores
 app.get('/autor', (req, res) => {
   db.query('SELECT * FROM AUTOR', (err, result) => {
-    if (err) {
-      res.render("error", { mensaje: err });
-    } else {
-      res.render('autor/autor', { autor: result });
-    }
+    if (err) res.render("error", { mensaje: err });
+    else res.render('autor/autor', { autor: result });
   });
 });
 
@@ -207,8 +204,6 @@ app.post('/autor-delete/:id', (req, res) => {
     else res.redirect('/autor');
   });
 });
-
-
 
 // Rutas para clientes
 app.get('/cliente', (req, res) => {
