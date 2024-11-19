@@ -2,7 +2,7 @@ extends ../templates/layout
 
 block content
     h1 Agregar Cliente
-        form(action='/cliente-add', method='post')
+    form(action='/cliente-add', method='post')
         label(for='nombre') Nombre:
         input(type='text', id='nombre', name='nombre', required=true)
         br
