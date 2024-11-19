@@ -86,7 +86,7 @@ app.get("/libro", (req, res) => {
     if (err) {
       res.render("error", { mensaje: err });
     } else {
-      res.render("libro", { libros: result });
+      res.render("libro/libro", { libros: result });
     }
   });
 });
@@ -277,7 +277,7 @@ app.get("/venta", (req, res) => {
     if (err) {
       res.render("error", { mensaje: err.message });
     } else {
-      res.render("venta", { ventas: result });
+      res.render("venta/venta", { ventas: result });
     }
   });
 });
