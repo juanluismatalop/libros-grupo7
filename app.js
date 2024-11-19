@@ -152,7 +152,7 @@ app.get('/autor', (req, res) => {
 });
 
 app.get('/autor-add', (req, res) => {
-  res.render('autor-add');
+  res.render('autor/autor-add');
 });
 
 app.post('/autor-add', (req, res) => {
@@ -173,7 +173,7 @@ app.get('/autor-edit/:id', (req, res) => {
     if (err) res.render("error", { mensaje: err });
     else {
       if (result.length > 0)
-        res.render('autor-edit', { autor: result[0] });
+        res.render('autor/autor-edit', { autor: result[0] });
       else
         res.render('error', { mensaje: 'El autor no existe.' });
     }
@@ -193,7 +193,7 @@ app.get('/autor-delete/:id', (req, res) => {
   const id_autor = req.params.id;
   db.query('SELECT * FROM AUTOR WHERE ID_AUTOR = ?', [id_autor], (err, result) => {
     if (err) res.render("error", { mensaje: err });
-    else res.render('autor-delete', { autor: result[0] });
+    else res.render('autor/autor-delete', { autor: result[0] });
   });
 });
 
