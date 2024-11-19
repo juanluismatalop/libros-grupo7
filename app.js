@@ -150,8 +150,7 @@ app.get("/autor", (req, res) => {
     if (err) {
       res.render("error", { mensaje: err });
     } else {
-      console.log(result)
-      res.render("autor/autor", { autores: result });
+      res.render("autor", { autores: result });
     }
   });
 });
