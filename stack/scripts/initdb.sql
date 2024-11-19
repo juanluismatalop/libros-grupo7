@@ -47,6 +47,8 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(100) NOT NULL
 );
 
+SET NAMES utf8mb4;
+
 INSERT INTO users (username, password) VALUES ('root', 'elDeSant14g0');
 
 INSERT INTO CLIENTE (NOMBRE, CORREO) VALUES 

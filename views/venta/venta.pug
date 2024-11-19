@@ -11,10 +11,10 @@ block content
         tbody 
             each venta in ventas 
                 tr 
-                    td= venta.id_venta 
-                    td= venta.fecha_venta
-                    td= venta.total 
+                    td= venta.ID_VENTA 
+                    td= venta.FECHA_VENTA
+                    td= venta.TOTAL 
                     td 
-                        a(href=`/venta-delete/${venta.id_venta}`) Eliminar venta
+                        a(href=`/venta-delete/${venta.ID_VENTA}`) Eliminar venta
     p 
         a(href='/venta-add') Agregar nueva venta

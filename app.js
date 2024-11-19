@@ -174,8 +174,9 @@ app.get('/autor-edit/:id', (req, res) => {
     else {
       if (result.length > 0)
         res.render('autor/autor-edit', { autor: result[0] });
-      else
+      else{
         res.render('error', { mensaje: 'El autor no existe.' });
+      }
     }
   });
 });
@@ -272,6 +273,7 @@ app.get("/venta", (req, res) => {
     if (err) {
       res.render("error", { mensaje: err.message });
     } else {
+      console.log(result)
       res.render("venta/venta", { ventas: result });
     }
   });

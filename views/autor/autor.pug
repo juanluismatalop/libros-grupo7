@@ -11,13 +11,13 @@ block content
       if autores && autores.length
         each autor in autores
           tr
-            td= autor.id_autor
-            td= autor.nombre
-            td= autor.pais
+            td= autor.ID_AUTOR
+            td= autor.NOMBRE
+            td= autor.PAIS
             td
-              a(href=`/autor-edit/${autor.id_autor}`) Editar
+              a(href=`/autor-edit/${autor.ID_AUTOR}`) Editar
               span | 
-              a(href=`/autor-delete/${autor.id_autor}`) Eliminar
+              a(href=`/autor-delete/${autor.ID_AUTOR}`) Eliminar
       else
         tr
           td(colspan="4") No hay autores disponibles.
@@ -30,7 +30,7 @@ block content
     option(value="") -- Seleccione un autor --
     if autores && autores.length
       each autor in autores
-        option(value=autor.id_autor)= autor.nombre
+        option(value=autor.ID_AUTOR)= autor.NOMBRE
   br
   a(href='/') Volver a la Lista
 
