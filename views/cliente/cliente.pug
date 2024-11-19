@@ -19,8 +19,8 @@ block content
                             td=cliente.NOMBRE                        
                             td=cliente.CORREO
                             td 
-                                a(href=`/clientes/del/${cliente.ID_CLIENTE}`) borrar 
+                                a(href=`/cliente-delete/${cliente.ID_CLIENTE}`) borrar 
                             td 
-                                a(href=`/clientes/edit/${cliente.ID_CLIENTE}`) editar 
+                                a(href=`/cliente-edit/${cliente.ID_CLIENTE}`) editar 
             p 
-                a(href="/clientes/add") Añadir un aluclientemno nuevo
+                a(href="/cliente-add") Añadir un nuevo cliente

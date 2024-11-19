@@ -223,7 +223,7 @@ app.get('/cliente', (req, res) => {
 });
 
 app.get('/cliente-add', (req, res) => {
-  res.render('cliente-add');
+  res.render('cliente/cliente-add');
 });
 
 app.post('/cliente-add', (req, res) => {
@@ -243,7 +243,7 @@ app.get('/cliente-edit/:id', (req, res) => {
     if (err) res.render("error", { mensaje: err });
     else {
       if (result.length > 0)
-        res.render('cliente-edit', { cliente: result[0] });
+        res.render('cliente/cliente-edit', { cliente: result[0] });
       else
         res.render('error', { mensaje: 'El cliente no existe.' });
     }
@@ -263,7 +263,7 @@ app.get('/cliente-delete/:id', (req, res) => {
   const clienteId = req.params.id;
   db.query('SELECT * FROM CLIENTE WHERE ID_CLIENTE = ?', [clienteId], (err, result) => {
     if (err) res.render("error", { mensaje: err });
-    else res.render('cliente-delete', { cliente: result[0] });
+    else res.render('cliente/cliente-delete', { cliente: result[0] });
   });
 });
 
@@ -296,7 +296,7 @@ app.get("/venta-add", (req, res) => {
         if (err) {
           res.render("error", { mensaje: err });
         } else {
-          res.render("venta-add", { clientes, libros });
+          res.render("venta/venta-add", { clientes, libros });
         }
       });
     }
@@ -307,7 +307,7 @@ app.get("/venta-delete/:id", (req, res) => {
   const ventaId = req.params.id;
   db.query("SELECT * FROM VENTA WHERE ID_VENTA = ?", [ventaId], (err, result) => {
     if (err) res.render("error", { mensaje: err });
-    else res.render("venta-delete", { venta: result[0] });
+    else res.render("venta/venta-delete", { venta: result[0] });
   });
 });
 

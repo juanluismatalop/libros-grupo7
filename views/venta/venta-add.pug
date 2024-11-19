@@ -11,13 +11,13 @@ block content
       label(for='cliente') Selecciona un Cliente: 
         select(id='cliente', name='cliente')
           each cliente in clientes
-            option(value= Cliente.Id)= `${CLIENTE_ID} ${CLIENTE_NOMBRE}` 
+            option(value= cliente.ID_CLIENTE)= `${ID_CLIENTE} ${NOMBRE}` 
       br
 
       label(for='libro') selecciona un Libro: 
         select(id='libro', name='libro')
           each libro in libros 
-            option(value= Libro.id)= `${LIBRO.ID_LIBRO} ${LIBRO.TITULO}`
+            option(value= libro.id)= `${LIBRO.ID_LIBRO} ${LIBRO.TITULO}`
       br
 
       button(type='submit') Agregar Venta
