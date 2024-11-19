@@ -6,7 +6,7 @@ block content
     ul
       li Nombre: #{autor.nombre}
       li Pais: #{autor.pais}
-    form(action=`/autor-delete/${autor.id_autor}`, method='post')
+    form(action=`/autor-delete/${autor.ID_AUTOR}`, method='post')
         button(type='submit') Eliminar Autor 
     br
     a(href='/autor') Cancelar
