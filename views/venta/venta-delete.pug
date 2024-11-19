@@ -1,6 +1,8 @@
 extends ../templates/layout
 
 block content
+    link(rel="stylesheet", href="/css/style.css")
+  
     h1 Eliminar Venta
 
     form(action=`/venta-delete/${venta.ID_VENTA}`, method='post')

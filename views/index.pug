@@ -2,10 +2,3 @@ extends ./templates/layout
 
 block content
   link(rel="stylesheet", href="/css/style.css")
-  h1 Bienvenido, #{user || 'Invitado'}
-  if user
-    p
-      a(href='/logout') Cerrar Sesión
-  else
-    p
-      a(href='/login') Iniciar Sesión

@@ -1,6 +1,8 @@
 extends ../templates/layout
 
 block content
+    link(rel="stylesheet", href="/css/style.css")
+  
     h1 Agregar Libro
     form(action='/libro-add', method='post')
       label(for='titulo') Titulo:
