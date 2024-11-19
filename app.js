@@ -86,6 +86,7 @@ app.get("/libro", (req, res) => {
     if (err) {
       res.render("error", { mensaje: err });
     } else {
+      console.log(result)
       res.render("libro/libro", { libros: result });
     }
   });
@@ -144,10 +145,14 @@ app.post("/libro-delete/:id", (req, res) => {
 });
 
 // Rutas para autores
-app.get('/autor', (req, res) => {
-  db.query('SELECT * FROM AUTOR', (err, result) => {
-    if (err) res.render("error", { mensaje: err });
-    else res.render('autor/autor', { autor: result });
+app.get("/autor", (req, res) => {
+  db.query("SELECT * FROM AUTOR", (err, result) => {
+    if (err) {
+      res.render("error", { mensaje: err });
+    } else {
+      console.log(result)
+      res.render("autor/autor", { autores: result });
+    }
   });
 });
 

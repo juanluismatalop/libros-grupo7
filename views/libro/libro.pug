@@ -12,13 +12,13 @@ block content
         tbody 
             each libro in libros 
                 tr 
-                    td= libro.id_libro 
-                    td= libro.titulo 
-                    td= libro.fecha_publicacion 
-                    td= libro.precio 
+                    td= libro.ID_LIBRO 
+                    td= libro.TITULO 
+                    td= libro.FECHA_PUBLICACION 
+                    td= libro.PRECIO 
                     td 
-                        a(href=`/libro-edit/${libro.id_libro}`) Editar libro
+                        a(href=`/libro-edit/${libro.ID_LIBRO}`) Editar libro
                         span 
-                        a(href=`/libro-delete/${libro.id_libro}`) Eliminar libro
+                        a(href=`/libro-delete/${libro.ID_LIBRO}`) Eliminar libro
     p 
         a(href='/libro-add') Agregar nuevo libro

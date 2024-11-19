@@ -1,26 +1,24 @@
+extends ../templates/layout
+
 block content
   h1 Lista de Autores
   table
     thead
       tr
-        th ID_Autor
+        th Id Autor
         th Nombre
         th Pais
         th Acciones
     tbody
-      if autores && autores.length
-        each autor in autores
-          tr
-            td= autor.ID_AUTOR
-            td= autor.NOMBRE
-            td= autor.PAIS
-            td
-              a(href=`/autor-edit/${autor.ID_AUTOR}`) Editar
-              span | 
-              a(href=`/autor-delete/${autor.ID_AUTOR}`) Eliminar
-      else
+      each autor in autores 
         tr
-          td(colspan="4") No hay autores disponibles.
+          td= autor.ID_AUTOR
+          td= autor.NOMBRE
+          td= autor.PAIS
+          td
+            a(href=`/autor-edit/${autor.ID_AUTOR}`) Editar
+            span | 
+            a(href=`/autor-delete/${autor.ID_AUTOR}`) Eliminar
   p
     a(href='/autor-add') Agregar Nuevo Autor
 
