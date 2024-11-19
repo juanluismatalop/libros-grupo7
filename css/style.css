@@ -1,0 +1,169 @@
+/* Resetear márgenes y paddings por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo global para el cuerpo de la página */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #060664;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  
+  /* Estilo para los encabezados */
+  h1, h2, h3 {
+    color: #2c3e50;
+  }
+  
+  /* Estilo para los enlaces */
+  a {
+    text-decoration: none;
+    color: #3498db;
+  }
+  
+  a:hover {
+    color: #2980b9;
+  }
+  
+  /* Estilo para los formularios */
+  form {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  form input,
+  form select,
+  form button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  form button {
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Estilo para las tablas */
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Estilo para el encabezado y la barra de navegación */
+  header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  nav {
+    margin-bottom: 20px;
+  }
+  
+  nav a {
+    margin-right: 20px;
+    color: white;
+    font-size: 1.2em;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Estilo para los mensajes de error */
+  .error-message {
+    color: red;
+    font-weight: bold;
+    background-color: #f8d7da;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
+  
+  /* Estilo específico para el login */
+  .login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .login-form button {
+    background-color: #27ae60;
+  }
+  
+  .login-form button:hover {
+    background-color: #2ecc71;
+  }
+  
+  /* Estilo para el contenido de las páginas */
+  .page-content {
+    margin-top: 20px;
+  }
+  
+  .page-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .page-content .add-button,
+  .page-content .edit-button,
+  .page-content .delete-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-align: center;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .page-content .add-button:hover,
+  .page-content .edit-button:hover,
+  .page-content .delete-button:hover {
+    background-color: #c0392b;
+  }
+  
