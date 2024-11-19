@@ -4,9 +4,9 @@ block content
     h1 Eliminar Libro
     p ¿Estás seguro de que deseas eliminar el libro con el siguiente detalle?
     ul
-      li Titulo: #{libro.titulo}
-      li Codigo: #{libro.id_libro}
-    form(action=`/libro-delete/${libro.id_libro}`, method='post')
+      li Titulo: #{libro.TITULO}
+      li Codigo: #{libro.ID_LIBRO}
+    form(action=`/libro-delete/${libro.ID_LIBRO}`, method='post')
         button(type='submit') Eliminar Libro
     br
-    a(href='/libros') Cancelar
+    a(href='/libro') Cancelar

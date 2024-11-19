@@ -2,9 +2,9 @@ extends ../templates/layout
 
 block content
     h1 Editar Libro
-    form(action=`/libro-edit/${libro.id_libro}`, method='post')      
+    form(action=`/libro-edit/${libro.ID_LIBRO}`, method='post')      
       label(for='titulo') Titulo:
-      input.form-control(type='text', id='titulo', name='titulo', value=libro.titulo, required=true)
+      input.form-control(type='text', id='titulo', name='titulo', value=libro.TITULO, required=true)
       br
       label(for='fecha_publicacion') Fecha de publicacion: 
       input.form-control(type="date", id='fecha_publicacion', name= 'fecha_publicacion')
@@ -14,4 +14,4 @@ block content
       br
       button(type='submit') Guardar Cambios
       br
-    a(href='/libros') Volver a la Lista
+    a(href='/libro') Volver a la Lista

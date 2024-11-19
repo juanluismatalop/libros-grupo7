@@ -93,7 +93,7 @@ app.get("/libro", (req, res) => {
 });
 
 app.get("/libro-add", (req, res) => {
-  res.render("libro-add");
+  res.render("libro/libro-add");
 });
 
 app.post("/libro-add", (req, res) => {
@@ -111,7 +111,7 @@ app.get("/libro-edit/:id", (req, res) => {
   const query = "SELECT * FROM LIBRO WHERE ID_LIBRO = ?";
   db.query(query, [libroId], (err, results) => {
     if (err) res.render("error", { mensaje: err.message });
-    else res.render("libro-edit", { libro: results[0] });
+    else res.render("libro/libro-edit", { libro: results[0] });
   });
 });
 
@@ -119,7 +119,7 @@ app.post("/libro-edit/:id", (req, res) => {
   const libroId = req.params.id;
   const { titulo, fecha_publicacion, precio } = req.body;
   const query =
-    "UPDATE LIBRO SET TITULO = ?, FECHA_PUBLICACION = ?, PRECIO = ?";
+    "UPDATE LIBRO SET TITULO = ?, FECHA_PUBLICACION = ?, PRECIO = ? WHERE ID_LIBRO = ?";
   db.query(query, [titulo, fecha_publicacion, precio, libroId], (err) => {
     if (err) res.render("error", { mensaje: err });
     else res.redirect("/libro");
@@ -131,7 +131,7 @@ app.get("/libro-delete/:id", (req, res) => {
   const query = "SELECT * FROM LIBRO WHERE ID_LIBRO = ?";
   db.query(query, [libroId], (err, results) => {
     if (err) res.render("error", { mensaje: err.message });
-    else res.render("libro-delete", { libro: results[0] });
+    else res.render("libro/libro-delete", { libro: results[0] });
   });
 });
 
