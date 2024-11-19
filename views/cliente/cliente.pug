@@ -15,12 +15,12 @@ block content
                 tbody 
                     each cliente in clientes
                         tr 
-                            td=cliente.id
-                            td=cliente.nombre                        
-                            td=cliente.apellido
+                            td=cliente.ID_CLIENTE
+                            td=cliente.NOMBRE                        
+                            td=cliente.CORREO
                             td 
-                                a(href=`/clientes/del/${cliente.id}`) borrar 
+                                a(href=`/clientes/del/${cliente.ID_CLIENTE}`) borrar 
                             td 
-                                a(href=`/clientes/edit/${cliente.id}`) editar 
+                                a(href=`/clientes/edit/${cliente.ID_CLIENTE}`) editar 
             p 
                 a(href="/clientes/add") Añadir un aluclientemno nuevo

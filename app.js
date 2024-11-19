@@ -215,7 +215,10 @@ app.post('/autor-delete/:id', (req, res) => {
 app.get('/cliente', (req, res) => {
   db.query('SELECT * FROM CLIENTE', (err, result) => {
     if (err) res.render("error", { mensaje: err });
-    else res.render('cliente/cliente', { clientes: result });
+    else{
+      console.log(result)
+      res.render('cliente/cliente', { clientes: result });
+    } 
   });
 });
 
