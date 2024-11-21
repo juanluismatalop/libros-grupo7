@@ -303,6 +303,18 @@ app.get("/venta-add", (req, res) => {
   });
 });
 
+app.post("/venta-add", (req, res) => {
+  const { fecha_venta, precio } = req.body;
+  const query = "INSERT INTO VENTA (FECHA_VENTA, TOTAL) VALUES (?, ?)";
+  db.query(query, [fecha_venta, precio], (err) => {
+    if (err) {
+      res.render("error", { mensaje: err.message });
+    } else {
+      res.redirect("/venta");
+    }
+  });
+});
+
 app.get("/venta-delete/:id", (req, res) => {
   const ventaId = req.params.id;
   db.query("SELECT * FROM VENTA WHERE ID_VENTA = ?", [ventaId], (err, result) => {
