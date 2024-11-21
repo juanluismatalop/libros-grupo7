@@ -1,0 +1,22 @@
+extends ../templates/layout
+
+block content
+    link(rel="stylesheet", href="/css/style.css")
+    
+    h1 Lista de Ventas 
+    table 
+        thead 
+            tr 
+                th Id Venta 
+                th Fecha de Venta
+                th Total 
+        tbody 
+            each venta in ventas 
+                tr 
+                    td= venta.ID_VENTA 
+                    td= venta.FECHA_VENTA
+                    td= venta.TOTAL 
+                    td 
+                        a(href=`/venta-delete/${venta.ID_VENTA}`) Eliminar venta
+    p 
+        a(href='/venta-add') Agregar nueva venta

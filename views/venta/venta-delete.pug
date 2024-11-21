@@ -1,0 +1,17 @@
+extends ../templates/layout
+
+block content
+    link(rel="stylesheet", href="/css/style.css")
+  
+    h1 Eliminar Venta
+
+    form(action=`/venta-delete/${venta.ID_VENTA}`, method='post')
+
+      label(for='venta') Venta:
+      
+      select(id='venta', name='venta')
+          option(value=venta.ID_VENTA) #{venta.ID_VENTA}
+      br
+      button(type='submit') Eliminar Venta
+    br
+    a(href='/venta') Volver a la Lista

@@ -1,0 +1,18 @@
+html
+  head
+    title= pageTitle
+    link(rel='stylesheet', type='text/css', href='/css/estilos.css')
+  body    
+    h1 Bienvenido, #{user || 'Invitado'}
+    nav
+      div
+        a(href="/") Inicio
+        if user
+          a(href="/cliente") Clientes
+          a(href="/venta") Ventas
+          a(href="/libro") Libros
+          a(href="/autor") Autor 
+          a(href="/logout") Cerrar sesión
+        else
+          a(href="/login") Iniciar Sesión
+    block content

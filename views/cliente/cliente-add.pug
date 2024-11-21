@@ -1,0 +1,16 @@
+extends ../templates/layout
+
+block content
+    link(rel="stylesheet", href="/css/style.css")
+  
+    h1 Agregar Cliente
+    form(action='/cliente-add', method='post')
+        label(for='nombre') Nombre:
+        input(type='text', id='nombre', name='nombre', required=true)
+        br
+        label(for='correo') Correo :
+        input(type='text', id='correo', name='correo', required=true)
+        br
+        button(type='submit') Agregar Cliente 
+    br
+    a(href='/') Volver a la Lista

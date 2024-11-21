@@ -1,0 +1,16 @@
+extends ../templates/layout
+
+block content 
+    link(rel="stylesheet", href="/css/style.css")
+  
+    h3 Borrar Cliente
+        div 
+            form(method="post") 
+                label(for="nombre") Nombre:
+                input(type="text", name="nombre", value=`${cliente.NOMBRE}`,disabled)
+                br
+                label(for='correo') Correo :
+                input(type='text', id='correo', name='correo', required=true)
+                br
+                input(type="hidden", name="id", value=`${cliente.ID_CLIENTE}`)
+                input(type="submit", value="Enviar")

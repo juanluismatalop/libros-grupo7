@@ -1,0 +1,16 @@
+extends ../templates/layout
+
+block content
+  link(rel="stylesheet", href="/css/style.css")
+  
+  h1 Editar Autor 
+  form(action=`/autor-edit/${autor.ID_AUTOR}`, method='post')      
+    label(for='nombre') Nombre:
+    input.form-control(type='text', id='nombre', name='nombre', value=autor.NOMBRE, required=true)
+    br
+    label(for='pais') Pais:
+    input.form-control(type='text', id='pais', name='pais', value=autor.PAIS, required=true)
+    br
+    button(type='submit') Guardar Cambios
+    br
+  a(href='/autor') Volver a la Lista

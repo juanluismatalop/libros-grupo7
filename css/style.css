@@ -1,0 +1,195 @@
+/* Resetear márgenes y paddings por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo global para el cuerpo de la página */
+body {
+  font-family: 'Georgia', serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.8;
+  padding: 20px;
+}
+
+/* Estilo para el encabezado */
+header {
+  background-color: #5c3d2e;
+  color: #f4f4f9;
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 2em;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+/* Barra de navegación */
+nav {
+  background-color: #3e2723;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+nav a {
+  color: #f4f4f9;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0 15px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffc107;
+}
+
+/* Estilo para los encabezados */
+h1, h2, h3 {
+  color: #5c3d2e;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Estilo para los enlaces */
+a {
+  text-decoration: none;
+  color: #8e44ad;
+}
+
+a:hover {
+  color: #5b2c6f;
+}
+
+/* Estilo para los formularios */
+form {
+  margin: 20px 0;
+  padding: 25px;
+  background-color: #fffdfa;
+  border-radius: 10px;
+  border: 1px solid #e0dede;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form input,
+form select,
+form button {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+form button {
+  background-color: #3e2723;
+  color: #f4f4f9;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #5c3d2e;
+}
+
+/* Estilo para las tablas */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #fffdfa;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0dede;
+}
+
+table th {
+  background-color: #3e2723;
+  color: #f4f4f9;
+}
+
+table tr:hover {
+  background-color: #f9f2ec;
+}
+
+/* Estilo para los mensajes de error */
+.error-message {
+  color: #721c24;
+  font-weight: bold;
+  background-color: #f8d7da;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+  border-radius: 6px;
+}
+
+/* Estilo específico para el login */
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 25px;
+  background-color: #fffdfa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0dede;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Merriweather', serif;
+}
+
+.login-form button {
+  background-color: #27ae60;
+  font-weight: bold;
+}
+
+.login-form button:hover {
+  background-color: #2ecc71;
+}
+
+/* Estilo para el contenido */
+.page-content {
+  margin-top: 20px;
+}
+
+.page-content h2 {
+  margin-bottom: 20px;
+}
+
+.page-content .add-button,
+.page-content .edit-button,
+.page-content .delete-button {
+  background-color: #8e44ad;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.page-content .add-button:hover,
+.page-content .edit-button:hover,
+.page-content .delete-button:hover {
+  background-color: #5b2c6f;
+}

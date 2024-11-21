@@ -1,0 +1,27 @@
+extends ../templates/layout
+
+block content
+        link(rel="stylesheet", href="/css/style.css")
+
+        div 
+            h3 listado de clientes
+            table(border=1)
+                thead 
+                    tr
+                        th id
+                        th nombre 
+                        th correo
+                        th eliminar 
+                        th editar
+                tbody 
+                    each cliente in clientes
+                        tr 
+                            td=cliente.ID_CLIENTE
+                            td=cliente.NOMBRE                        
+                            td=cliente.CORREO
+                            td 
+                                a(href=`/cliente-delete/${cliente.ID_CLIENTE}`) eliminar 
+                            td 
+                                a(href=`/cliente-edit/${cliente.ID_CLIENTE}`) editar 
+            p 
+                a(href="/cliente-add") Añadir un nuevo cliente

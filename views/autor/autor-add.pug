@@ -1,0 +1,16 @@
+extends ../templates/layout
+
+block content
+  link(rel="stylesheet", href="/css/style.css")
+  
+  h1 Agregar Autor
+  form(action='/autor-add', method='post')
+    label(for='nombre') Nombre:
+    input(type='text', id='nombre', name='nombre', required=true)
+    br
+    label(for='pais') País:
+    input(type='text', id='pais', name='pais', required=true)
+    br
+    button(type='submit') Agregar Autor
+  br
+  a(href='/autor') Volver a la Lista

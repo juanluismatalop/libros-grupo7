@@ -1,0 +1,80 @@
+CREATE DATABASE IF NOT EXISTS `libros`;
+
+USE `libros`;
+
+DROP TABLE IF EXISTS CLIENTE;
+DROP TABLE IF EXISTS VENTA;
+DROP TABLE IF EXISTS LIBRO;
+DROP TABLE IF EXISTS AUTOR;
+DROP TABLE IF EXISTS VENTA_LIBRO;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE IF NOT EXISTS CLIENTE(
+    ID_CLIENTE INT AUTO_INCREMENT PRIMARY KEY,
+    NOMBRE VARCHAR(300) NOT NULL,
+    CORREO VARCHAR(300) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS VENTA(
+    ID_VENTA INT AUTO_INCREMENT PRIMARY KEY,
+    FECHA_VENTA DATE NOT NULL, 
+    TOTAL FLOAT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS LIBRO(
+    ID_LIBRO INT AUTO_INCREMENT PRIMARY KEY,
+    TITULO VARCHAR(200) NOT NULL,
+    FECHA_PUBLICACION DATE,
+    PRECIO FLOAT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS AUTOR(
+    ID_AUTOR INT AUTO_INCREMENT PRIMARY KEY,
+    NOMBRE VARCHAR(300) NOT NULL,
+    PAIS VARCHAR(300) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS VENTA_LIBRO(
+    ID_VENTA INT,
+    ID_LIBRO INT,
+    FOREIGN KEY (ID_VENTA) REFERENCES VENTA(ID_VENTA),
+    FOREIGN KEY (ID_LIBRO) REFERENCES LIBRO(ID_LIBRO)
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    ID_USUARIO INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
+SET NAMES utf8mb4;
+
+INSERT INTO users (username, password) VALUES ('root', 'elDeSant14g0');
+
+INSERT INTO CLIENTE (NOMBRE, CORREO) VALUES 
+('Juan Pérez', 'juan.perez@example.com'),
+('María López', 'maria.lopez@example.com'),
+('Carlos García', 'carlos.garcia@example.com'),
+('Ana Martínez', 'ana.martinez@example.com'),
+('Luis Fernández', 'luis.fernandez@example.com');
+
+INSERT INTO VENTA (FECHA_VENTA, TOTAL) VALUES 
+('2023-01-15', 150.00),
+('2023-02-20', 200.50),
+('2023-03-10', 300.75),
+('2023-04-05', 120.00),
+('2023-05-25', 250.00);
+
+INSERT INTO LIBRO (TITULO, FECHA_PUBLICACION, PRECIO) VALUES 
+('El Quijote', '1605-01-16', 20.00),
+('Cien años de soledad', '1967-05-30', 25.00),
+('La casa de los espíritus', '1982-10-08', 30.00),
+('1984', '1949-06-08', 15.00),
+('El amor en los tiempos del cólera', '1985-03-05', 22.00);
+
+INSERT INTO AUTOR (NOMBRE, PAIS) VALUES 
+('Miguel de Cervantes', 'España'),
+('Gabriel García Márquez', 'Colombia'),
+('Isabel Allende', 'Chile'),
+('George Orwell', 'Reino Unido'),
+('Gabriel García Márquez', 'Colombia');

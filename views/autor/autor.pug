@@ -1,0 +1,28 @@
+extends ../templates/layout
+
+block content
+  link(rel="stylesheet", href="/css/style.css")
+  
+  h1 Lista de Autores
+  table
+    thead
+      tr
+        th Id Autor
+        th Nombre
+        th Pais
+        th Acciones
+    tbody
+      each autor in autores 
+        tr
+          td= autor.ID_AUTOR
+          td= autor.NOMBRE
+          td= autor.PAIS
+          td
+            a(href=`/autor-edit/${autor.ID_AUTOR}`) Editar
+            span | 
+            a(href=`/autor-delete/${autor.ID_AUTOR}`) Eliminar
+  p
+    a(href='/autor-add') Agregar Nuevo Autor
+  br
+  a(href='/') Volver a la Lista
+
