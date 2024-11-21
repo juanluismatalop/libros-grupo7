@@ -30,8 +30,9 @@ header {
 nav {
   background-color: #3e2723;
   padding: 10px 20px;
-  text-align: center;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 nav a {

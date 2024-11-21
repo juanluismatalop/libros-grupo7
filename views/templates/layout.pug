@@ -5,22 +5,14 @@ html
   body    
     h1 Bienvenido, #{user || 'Invitado'}
     nav
-      ul
-        li
-          a(href="/") Inicio
+      div
+        a(href="/") Inicio
         if user
-            li
-                a(href="/cliente") Clientes
-            li 
-                a(href="/venta") Ventas
-            li 
-                a(href="/libro") Libros
-            li 
-                a(href="/autor") Autor 
-            li
-                a(href="/logout") Cerrar sesión
+          a(href="/cliente") Clientes
+          a(href="/venta") Ventas
+          a(href="/libro") Libros
+          a(href="/autor") Autor 
+          a(href="/logout") Cerrar sesión
         else
-          li
-            a(href="/login") Iniciar Sesión
-      
+          a(href="/login") Iniciar Sesión
     block content
