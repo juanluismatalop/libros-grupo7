@@ -23,14 +23,6 @@ block content
             a(href=`/autor-delete/${autor.ID_AUTOR}`) Eliminar
   p
     a(href='/autor-add') Agregar Nuevo Autor
-
-  h2 Maestro detalle: Libros escritos por un autor
-  label(for="libros") Seleccione un libro:
-  select(name="libros", id="libros", onchange="location = '/libro/libro/' + this.value;")
-    option(value="") -- Seleccione un autor --
-    if autores && autores.length
-      each autor in autores
-        option(value=autor.ID_AUTOR)= autor.NOMBRE
   br
   a(href='/') Volver a la Lista
 
