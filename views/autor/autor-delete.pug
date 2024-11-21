@@ -6,8 +6,8 @@ block content
     h1 Eliminar Autor
     p ¿Estás seguro de que deseas eliminar al autor con los siguientes datos?
     ul
-      li Nombre: #{autor.nombre}
-      li Pais: #{autor.pais}
+      li Nombre: #{autor.NOMBRE}
+      li Pais: #{autor.PAIS}
     form(action=`/autor-delete/${autor.ID_AUTOR}`, method='post')
         button(type='submit') Eliminar Autor 
     br
