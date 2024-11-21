@@ -4,7 +4,7 @@ block content
   link(rel="stylesheet", href="/css/style.css")
   
   h1 Editar Autor 
-  form(action=`/autor-edit/${autor.id}`, method='post')      
+  form(action=`/autor-edit/${autor.ID_AUTOR}`, method='post')      
     label(for='nombre') Nombre:
     input.form-control(type='text', id='nombre', name='nombre', value=autor.NOMBRE, required=true)
     br
