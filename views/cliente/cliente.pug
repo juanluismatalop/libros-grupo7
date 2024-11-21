@@ -11,7 +11,7 @@ block content
                         th id
                         th nombre 
                         th correo
-                        th borrar 
+                        th eliminar 
                         th editar
                 tbody 
                     each cliente in clientes
@@ -20,7 +20,7 @@ block content
                             td=cliente.NOMBRE                        
                             td=cliente.CORREO
                             td 
-                                a(href=`/cliente-delete/${cliente.ID_CLIENTE}`) borrar 
+                                a(href=`/cliente-delete/${cliente.ID_CLIENTE}`) eliminar 
                             td 
                                 a(href=`/cliente-edit/${cliente.ID_CLIENTE}`) editar 
             p 
