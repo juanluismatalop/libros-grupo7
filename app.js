@@ -80,7 +80,7 @@ app.get("/logout", (req, res) => {
     else res.redirect("/login");
   });
 });
-
+//Ruta libro
 app.get("/libro", (req, res) => {
   db.query("SELECT * FROM LIBRO", (err, result) => {
     if (err) {
@@ -210,6 +210,33 @@ app.post('/autor-delete/:id', (req, res) => {
     else res.redirect('/autor');
   });
 });
+
+app.get("/autor/:id/libros", (req, res) => {
+  const id_autor = req.params.id;
+
+  const autorQuery = "SELECT * FROM AUTOR WHERE ID_AUTOR = ?";
+  const librosQuery = "SELECT * FROM LIBRO WHERE ID_AUTOR = ?";
+
+  db.query(autorQuery, [id_autor], (err, autorResult) => {
+    if (err || autorResult.length === 0) {
+      res.render("error", { mensaje: "Autor no encontrado." });
+    } else {
+      const autor = autorResult[0];
+      db.query(librosQuery, [id_autor], (err, libros) => {
+        if (err) {
+          res.render("error", { mensaje: "Error al obtener libros." });
+        } else {
+          res.render("autor/autor-detalle", {
+            autor,
+            libros,
+            mensaje: libros.length === 0 ? "Este autor no tiene libros asociados." : null,
+          });
+        }
+      });
+    }
+  });
+});
+
 
 // Rutas para clientes
 app.get('/cliente', (req, res) => {
