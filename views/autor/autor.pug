@@ -4,6 +4,15 @@ block content
   link(rel="stylesheet", href="/css/style.css")
   
   h1 Lista de Autores
+
+  form(action="/filtrar-pais" method="GET")
+    label(for="pais") Selecciona un país:
+    select(name="pais" id="pais")
+      option(value="") Todos
+      each pais in paises
+        option(value=pais)= pais
+    button(type="submit") Filtrar
+
   table
     thead
       tr
@@ -21,8 +30,10 @@ block content
             a(href=`/autor-edit/${autor.ID_AUTOR}`) Editar
             span | 
             a(href=`/autor-delete/${autor.ID_AUTOR}`) Eliminar
+  
   p
     a(href='/autor-add') Agregar Nuevo Autor
+  
 
   h2 Maestro detalle: Libros escritos por un autor
   label(for="libros") Seleccione un libro:
@@ -32,5 +43,7 @@ block content
       each autor in autores
         option(value=autor.ID_AUTOR)= autor.NOMBRE
   br
+
   a(href='/') Volver a la Lista
+
 
