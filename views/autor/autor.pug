@@ -3,47 +3,39 @@ extends ../templates/layout
 block content
   link(rel="stylesheet", href="/css/style.css")
   
-  h1 Lista de Autores
+  h1 Lista de Autores por País
 
-  form(action="/filtrar-pais" method="GET")
+  form(action="/autor" method="GET")
     label(for="pais") Selecciona un país:
-    select(name="pais" id="pais")
+    select(name="pais" id="pais" onchange="this.form.submit()")
       option(value="") Todos
       each pais in paises
-        option(value=pais)= pais
-    button(type="submit") Filtrar
+        // Resaltar el país seleccionado
+        option(value=pais selected=(pais === selectedPais))= pais
 
   table
     thead
       tr
         th Id Autor
         th Nombre
-        th Pais
+        th País
         th Acciones
     tbody
-      each autor in autores 
+      if autores.length > 0
+        each autor in autores
+          tr
+            td= autor.ID_AUTOR
+            td= autor.NOMBRE
+            td= autor.PAIS
+            td
+              a(href=`/autor-edit/${autor.ID_AUTOR}`) Editar
+              span | 
+              a(href=`/autor-delete/${autor.ID_AUTOR}`) Eliminar
+      else
         tr
-          td= autor.ID_AUTOR
-          td= autor.NOMBRE
-          td= autor.PAIS
-          td
-            a(href=`/autor-edit/${autor.ID_AUTOR}`) Editar
-            span | 
-            a(href=`/autor-delete/${autor.ID_AUTOR}`) Eliminar
-  
+          td(colspan="4") No hay autores para el país seleccionado.
+
   p
     a(href='/autor-add') Agregar Nuevo Autor
-  
-
-  h2 Maestro detalle: Libros escritos por un autor
-  label(for="libros") Seleccione un libro:
-  select(name="libros", id="libros", onchange="location = '/libro/libro/' + this.value;")
-    option(value="") -- Seleccione un autor --
-    if autores && autores.length
-      each autor in autores
-        option(value=autor.ID_AUTOR)= autor.NOMBRE
-  br
-
-  a(href='/') Volver a la Lista
 
 

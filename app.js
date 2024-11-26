@@ -146,15 +146,37 @@ app.post("/libro-delete/:id", (req, res) => {
 
 // Rutas para autores
 app.get("/autor", (req, res) => {
-  db.query("SELECT * FROM AUTOR", (err, result) => {
+  const { pais } = req.query;
+
+  const queryPaises = "SELECT DISTINCT PAIS FROM AUTOR";
+
+  let queryAutores = "SELECT * FROM AUTOR";
+  const params = [];
+
+  if (pais) {
+    queryAutores += " WHERE PAIS = ?";
+    params.push(pais);
+  }
+
+  db.query(queryPaises, (err, paises) => {
     if (err) {
-      res.render("error", { mensaje: err });
+      res.render("error", { mensaje: "Error al obtener los países." });
     } else {
-      console.log(result)
-      res.render("autor/autor", { autores: result });
+      db.query(queryAutores, params, (err, autores) => {
+        if (err) {
+          res.render("error", { mensaje: "Error al obtener los autores." });
+        } else {
+          res.render("autor/autor", {
+            autores,
+            paises: paises.map((p) => p.PAIS),
+            selectedPais: pais || "",
+          });
+        }
+      });
     }
   });
 });
+
 
 app.get('/autor-add', (req, res) => {
   res.render('autor/autor-add');
