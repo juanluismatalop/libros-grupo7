@@ -146,15 +146,37 @@ app.post("/libro-delete/:id", (req, res) => {
 
 // Rutas para autores
 app.get("/autor", (req, res) => {
-  db.query("SELECT * FROM AUTOR", (err, result) => {
+  const { pais } = req.query;
+
+  const queryPaises = "SELECT DISTINCT PAIS FROM AUTOR";
+
+  let queryAutores = "SELECT * FROM AUTOR";
+  const params = [];
+
+  if (pais) {
+    queryAutores += " WHERE PAIS = ?";
+    params.push(pais);
+  }
+
+  db.query(queryPaises, (err, paises) => {
     if (err) {
-      res.render("error", { mensaje: err });
+      res.render("error", { mensaje: "Error al obtener los países." });
     } else {
-      console.log(result)
-      res.render("autor/autor", { autores: result });
+      db.query(queryAutores, params, (err, autores) => {
+        if (err) {
+          res.render("error", { mensaje: "Error al obtener los autores." });
+        } else {
+          res.render("autor/autor", {
+            autores,
+            paises: paises.map((p) => p.PAIS),
+            selectedPais: pais || "",
+          });
+        }
+      });
     }
   });
 });
+
 
 app.get('/autor-add', (req, res) => {
   res.render('autor/autor-add');
@@ -287,20 +309,26 @@ app.get("/venta", (req, res) => {
   });
 });
 
-app.get("/venta-add", (req, res) => {
-  db.query("SELECT * FROM CLIENTE", (err, clientes) => {
-    if (err) {
-      res.render("error", { mensaje: err });
-    } else {
-      db.query("SELECT * FROM LIBRO", (err, libros) => {
-        if (err) {
-          res.render("error", { mensaje: err });
-        } else {
-          res.render("venta/venta-add", { clientes, libros });
-        }
+app.get("/venta-add", async (req, res) => {
+  try {
+    const clientes = await new Promise((resolve, reject) => {
+      db.query("SELECT * FROM CLIENTE", (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
       });
-    }
-  });
+    });
+
+    const libros = await new Promise((resolve, reject) => {
+      db.query("SELECT * FROM LIBRO", (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+      });
+    });
+
+    res.render("venta/venta-add", { clientes, libros });
+  } catch (err) {
+    res.render("error", { mensaje: err.message });
+  }
 });
 
 app.post("/venta-add", (req, res) => {
