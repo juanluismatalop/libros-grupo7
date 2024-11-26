@@ -309,20 +309,26 @@ app.get("/venta", (req, res) => {
   });
 });
 
-app.get("/venta-add", (req, res) => {
-  db.query("SELECT * FROM CLIENTE", (err, clientes) => {
-    if (err) {
-      res.render("error", { mensaje: err });
-    } else {
-      db.query("SELECT * FROM LIBRO", (err, libros) => {
-        if (err) {
-          res.render("error", { mensaje: err });
-        } else {
-          res.render("venta/venta-add", { clientes, libros });
-        }
+app.get("/venta-add", async (req, res) => {
+  try {
+    const clientes = await new Promise((resolve, reject) => {
+      db.query("SELECT * FROM CLIENTE", (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
       });
-    }
-  });
+    });
+
+    const libros = await new Promise((resolve, reject) => {
+      db.query("SELECT * FROM LIBRO", (err, result) => {
+        if (err) return reject(err);
+        resolve(result);
+      });
+    });
+
+    res.render("venta/venta-add", { clientes, libros });
+  } catch (err) {
+    res.render("error", { mensaje: err.message });
+  }
 });
 
 app.get("/venta-delete/:id", (req, res) => {
