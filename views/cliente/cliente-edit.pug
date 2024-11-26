@@ -10,7 +10,7 @@ block content
                 input(type="text", name="nombre", value=`${cliente.NOMBRE}`)
                 br
                 label(for='correo') Correo :
-                input(type='text', id='correo', name='correo', required=true)
+                input(type='text', id='correo', name='correo', required=true, value=`${cliente.CORREO}`)
                 br
                 input(type="hidden", name="id", value=`${cliente.ID_CLIENTE}`)
                 input(type="submit", value="Enviar")
